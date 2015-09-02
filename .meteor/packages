@@ -9,6 +9,7 @@ twbs:bootstrap
 underscore
 meteorhacks:kadira-debug
 kadira:flow-router
-kadira:react-layout
 react
 insecure
+kadira:react-layout
+autopublish

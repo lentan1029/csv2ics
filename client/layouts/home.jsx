@@ -8,7 +8,7 @@
   });
 //}
 
-App = React.createClass({
+Home = React.createClass({
 
   mixins: [ReactMeteorData],
 
@@ -21,27 +21,19 @@ App = React.createClass({
   renderPosts(){
     //implement domain 
     return this.data.posts.map((post) => {
-      return <Post key={post._id} post={post} />;
+      //return <Post key={post._id} post={post} />;
+      return <Post post={post} />;
     });
   },
 
   render() {
-
     return (
-      <div className="container">
-        <header className="navbar navbar-default" role="navigation"> 
-          <div className="navbar-header">
-            <a className="navbar-brand" href="/">Microscope</a>
-          </div>
-        </header>
-        <div id="main">
-          {this.renderPosts()}
-        </div>
-      </div>
+      <div>{this.renderPosts()}</div>
     )
   }
 
 });
+
 
 
 Post = React.createClass({
