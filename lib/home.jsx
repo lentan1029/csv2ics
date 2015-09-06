@@ -2,8 +2,6 @@ if (Meteor.isClient) {
   // This code is executed on the client only
  
   Meteor.startup(function () {
-    // Use Meteor.startup to render the component after the page is ready
-    //React.render(<App />, document.getElementById("render-target"));
     Meteor.subscribe("posts");
   });
 }
@@ -19,7 +17,6 @@ Home = React.createClass({
   },
 
   renderPosts(){
-    //implement domain 
     return this.data.posts.map((post) => {
       return <Post key={post._id} post={post} />;
     });
