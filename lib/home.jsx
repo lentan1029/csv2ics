@@ -1,4 +1,4 @@
-//if (Meteor.isClient) {
+if (Meteor.isClient) {
   // This code is executed on the client only
  
   Meteor.startup(function () {
@@ -6,7 +6,7 @@
     //React.render(<App />, document.getElementById("render-target"));
     Meteor.subscribe("posts");
   });
-//}
+}
 
 Home = React.createClass({
 
@@ -21,8 +21,7 @@ Home = React.createClass({
   renderPosts(){
     //implement domain 
     return this.data.posts.map((post) => {
-      //return <Post key={post._id} post={post} />;
-      return <Post post={post} />;
+      return <Post key={post._id} post={post} />;
     });
   },
 

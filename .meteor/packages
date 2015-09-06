@@ -7,9 +7,8 @@
 meteor-platform
 twbs:bootstrap
 underscore
-meteorhacks:kadira-debug
 kadira:flow-router
-react
 insecure
+react
 kadira:react-layout
-autopublish
+msavin:mongol
