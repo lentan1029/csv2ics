@@ -26,18 +26,18 @@ Edit = React.createClass({
 
   getMeteorData() {
     return {
-      post: Posts.findOne()
+      post: Posts.findOne({_id: this.props.postId}),
     }
   },
 
   render() {
     if (this.data.post){ //possible race condition. 
       return (
-        <Post post={this.data.post} />
+        <Post postId={this.props.postId} post={this.data.post} />
       )
     }
     else {
-      return <div></div> //loading template
+      return <div>asdf</div> //loading template
     }
   }
 });

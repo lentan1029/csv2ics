@@ -10,6 +10,18 @@ Home = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
+    /*var data = {};
+    var postId = this.props.postId;
+    var handle = Meteor.subscribe('Posts');
+    if (handle.ready()){
+      if (this.props.postId) {
+        data.post = Posts.findOne({_id: this.props.postId})
+      }
+    }
+    else {
+      data.post = Posts.find().fetch()
+    }*/
+
     return {
       posts: Posts.find().fetch()
     }
@@ -17,7 +29,7 @@ Home = React.createClass({
 
   renderPosts(){
     return this.data.posts.map((post) => {
-      return <Post key={post._id} post={post} />;
+      return <Post key={post._id} postId={post._id} post={post} />; //key not accessible from props anymore. check docs. using postId instead.
     });
   },
 
@@ -39,14 +51,25 @@ Post = React.createClass({
     return a.hostname;
   },
 
+  handleClick(postId) {
+    FlowRouter.go('/post/' + postId);
+  },
+
   render() {
-    return (
-      <div className="post">
-        <div className="post-content">
-          <h3><a href={this.props.post.url}>{this.props.post.title}</a><span>{this.domain(this.props.post.url)}</span></h3>
+    if (this.props){
+      return (
+        <div className="post" onClick={this.handleClick.bind(this, this.props.postId)}>
+          <div className="post-content">
+            <h3><a href={this.props.post.url}>{this.props.post.title}</a><span>{this.domain(this.props.post.url)}</span></h3>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
+    else {
+      return (
+        <div>asdf</div>
+      )
+    }
   }
 
 });

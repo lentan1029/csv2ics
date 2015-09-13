@@ -8,6 +8,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/post/:_id', {
   name: 'postPage',
   action: function(params, queryparams) {
-    ReactLayout.render(Main, {content: <Edit postId={params._id}/>})
+    ReactLayout.render(Main, {content: <Edit postId={params._id}/>});
+    //console.log(params._id);
   }
 });
