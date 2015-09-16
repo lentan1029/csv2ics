@@ -1,30 +1,21 @@
-if (Meteor.isClient) {
+/*if (Meteor.isClient) {
  
   Meteor.startup(function () {
     Meteor.subscribe("posts");
   });
-}
+}*/
 
 Home = React.createClass({
 
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    /*var data = {};
-    var postId = this.props.postId;
-    var handle = Meteor.subscribe('Posts');
+    var data = {};
+    var handle = Meteor.subscribe("posts");
     if (handle.ready()){
-      if (this.props.postId) {
-        data.post = Posts.findOne({_id: this.props.postId})
-      }
+      data.posts = Posts.find().fetch();
     }
-    else {
-      data.post = Posts.find().fetch()
-    }*/
-
-    return {
-      posts: Posts.find().fetch()
-    }
+    return data;
   },
 
   renderPosts(){
@@ -34,9 +25,7 @@ Home = React.createClass({
   },
 
   render() {
-    return (
-      <div>{this.renderPosts()}</div>
-    )
+    return (this.data.posts)? <div> {this.renderPosts()} </div> : <div>Loading...</div>;
   }
 
 });
