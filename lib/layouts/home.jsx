@@ -1,9 +1,4 @@
-/*if (Meteor.isClient) {
- 
-  Meteor.startup(function () {
-    Meteor.subscribe("posts");
-  });
-}*/
+
 
 Home = React.createClass({
 
@@ -56,7 +51,7 @@ Post = React.createClass({
     }
     else {
       return (
-        <div>asdf</div>
+        <div>loading...</div>
       )
     }
   }

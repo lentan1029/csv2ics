@@ -25,9 +25,12 @@ Edit = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    return {
-      post: Posts.findOne({_id: this.props.postId}),
+    var data = {};
+    var handle = Meteor.subscribe("posts");
+    if (handle.ready()){
+      data.post = Posts.findOne({_id: this.props.postId})
     }
+    return data;
   },
 
   render() {
@@ -37,7 +40,7 @@ Edit = React.createClass({
       )
     }
     else {
-      return <div>asdf</div> //loading template
+      return <div>loading...</div> //loading template
     }
   }
 });
