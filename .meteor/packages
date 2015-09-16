@@ -9,8 +9,10 @@ twbs:bootstrap
 underscore
 kadira:flow-router
 insecure
-react
 kadira:react-layout
 msavin:mongol
 useraccounts:bootstrap
 accounts-password
+react
+accounts-ui
+accounts-facebook
