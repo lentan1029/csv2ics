@@ -14,7 +14,14 @@ FlowRouter.route('/post/:_id', {
 
 FlowRouter.route('/submit', {
   name: 'postSubmit',
+  triggersEnter: [checkLoggedIn],
   action: function(params) {
     ReactLayout.render(Main, {content: <Submit />});
   }
 });
+
+function checkLoggedIn(context, redirect) {
+  if (!Meteor.user()){
+    redirect('/');
+  }
+}

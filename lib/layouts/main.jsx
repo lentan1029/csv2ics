@@ -6,7 +6,7 @@ Main = React.createClass({
             <a className="navbar-brand" href={FlowRouter.path('home')}>Template</a>
             <AccountsUIWrapper /> {/* <-- not ACTUALLY a navbar by twbs standards, so use pull-right instead of navbar-right*/}
             <div className="navbar-brand">
-              <a href={FlowRouter.path('postSubmit')}>Submit Post</a>
+              <SubmitLink />
             </div>
           </header>
         <div className="container-fluid">
