@@ -6,7 +6,11 @@ Submit = React.createClass({
     postAttributes.url = React.findDOMNode(this.refs.postUrl).value.trim();
     postAttributes.title = React.findDOMNode(this.refs.postTitle).value.trim();
 
-    Posts.insert(postAttributes);
+    Meteor.call('postInsert', postAttributes, function(err, res){
+      if(err){
+        return alert(err.reason)
+      }
+    });
 
     FlowRouter.go('/');
   },
