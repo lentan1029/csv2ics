@@ -1,16 +1,3 @@
-# template
-Meteorjs with React template, using Flow Router.
-Based on Discover Meteor tutorial.
+# csv2ics
+simple app to convert csv values from SMU's BOSS website to an ics file to sync easily with Mac calendars.
 
-Dependencies:
-Flow Router + React Layout
-Mongol
-Twitter Bootstrap
-
-Underscore
-Accounts-Password
-Accounts-Facebook
-Accounts-Google
-
-Future chnages:
-Migrate Accounts-ui completely to React
