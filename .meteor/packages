@@ -9,7 +9,6 @@ underscore
 kadira:flow-router
 kadira:react-layout
 useraccounts:bootstrap
-accounts-password
 react
 accounts-ui
 accounts-facebook
@@ -29,3 +28,8 @@ spacebars
 check
 meteorhacks:kadira-debug
 constellation:console
+
+
+npm-container
+cfs:standard-packages
+cfs:gridfs
