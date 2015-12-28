@@ -27,9 +27,14 @@ ejson
 spacebars
 check
 meteorhacks:kadira-debug
-constellation:console
+
+
+cfs:standard-packages
+cfs:gridfs
+meteorhacks:npm
+froatsnook:request
 
 
 npm-container
-cfs:standard-packages
-cfs:gridfs
+meteortoys:allthings
+meteorhacks:kadira

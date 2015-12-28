@@ -13,6 +13,16 @@ FlowRouter.route('/csv2ics', {
   }
 });
 
+
+//blazerender: test 
+FlowRouter.route('/blazerender', {
+  name: 'blazerender',
+  triggersEnter: [checkLoggedIn],
+  action: function(params) {
+    ReactLayout.render(IncludeTemplate, {template: Template.fileList})
+  }
+});
+
 function checkLoggedIn(context, redirect) {
   if (!Meteor.user()){
     redirect('/');

@@ -1,3 +1,5 @@
+//wip: sends ics content to console.
+
 Convert = React.createClass({
 
   mixins: [ReactMeteorData],
@@ -45,10 +47,17 @@ END:VEVENT\n\
 
   },
 
+  handleClick(event){
+    event.preventDefault();
+    //console.log("here")
+    //return Schedules.find(); //need to return this.url to click on and set option download=true
+  },
+
   render() {
     return (
       <div>
       <div className="post"> Login to <a target="_blank" href="https://eservices.smu.edu.sg/BOSS/BOSSWeb/TTPlanner.aspx">BOSS</a>. Copy the text from <a target="_blank" href="https://eservices.smu.edu.sg/BOSS/BOSSWeb/DownloadTimetable.aspx">"Download class and exam timetable"</a> and paste it below. </div>
+      <a className="btn post" href="../blazerender">asdf</a>
       <form className="main form" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label className="control-label" htmlFor="url">CSV</label>
@@ -62,6 +71,26 @@ END:VEVENT\n\
     )
   }
 });
+
+IncludeTemplate = React.createClass({
+    componentDidMount() {
+        var componentRoot = ReactDOM.findDOMNode(this);
+        var parentNode = componentRoot.parentNode;
+        parentNode.removeChild(componentRoot);
+        // Render the Blaze template on this node
+        this.view = Blaze.render(this.props.template, parentNode);
+        console.log(this.view)
+    },
+    componentWillUnmount() {
+        // Clean up Blaze view
+        Blaze.remove(this.view);
+    },
+    render(template) {
+        return (<div />)
+    }
+});
+
+
 
 /*Home = React.createClass({
 

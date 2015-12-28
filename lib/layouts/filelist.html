@@ -1,0 +1,9 @@
+<template name="fileList">
+  <div class="fileList">
+    {{#each schedule}}
+      <div class="file">
+        <strong>{{this}}</strong> <a href="{{this.url download=true}}" class="btn btn-primary" target="_parent">Download</a>
+      </div>
+    {{/each}}
+  </div>
+</template>
