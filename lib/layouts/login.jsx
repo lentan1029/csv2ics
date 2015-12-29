@@ -13,7 +13,6 @@ Login = React.createClass({
   },
 
   redirectToConvert(){
-    console.log("here");
     FlowRouter.go("convert");
   },
 
@@ -21,7 +20,7 @@ Login = React.createClass({
     if(this.data.loggedIn){
       return <div className="btn post" onClick={this.redirectToConvert}> Click to proceed. </div>
     } else {
-      return <div> Please log in via Facebook. </div>
+      return <div> Please log in via Facebook. <br /> (This website works best with Safari) </div>
     }
   }
 

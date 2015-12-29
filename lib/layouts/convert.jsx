@@ -1,5 +1,3 @@
-//wip: sends ics content to console.
-
 Convert = React.createClass({
 
   mixins: [ReactMeteorData],
@@ -32,32 +30,19 @@ END:VEVENT\n\
     return ics;
   },
 
+
   handleSubmit(event){
     event.preventDefault();
     var csv = ReactDOM.findDOMNode(this.refs.csvValues).value;
-    console.log(this.csvToIcs("asdf"));
-    var a = document.createElement('a');
-      a.download = '../public/asdf.txt';
-      a.href = '#';
-      document.body.appendChild(a);
-      a.addEventListener("click", function(e) {
-        a.parentNode.removeChild(a);
-      });
-      a.click();
-
-  },
-
-  handleClick(event){
-    event.preventDefault();
-    //console.log("here")
-    //return Schedules.find(); //need to return this.url to click on and set option download=true
-  },
+    var ics = this.csvToIcs(csv);
+    Meteor.call("storeIcs", ics, Meteor.userId());
+    ReactLayout.render(Main, {content: <IncludeTemplate template={Template.fileList}/>})
+   },
 
   render() {
     return (
       <div>
       <div className="post"> Login to <a target="_blank" href="https://eservices.smu.edu.sg/BOSS/BOSSWeb/TTPlanner.aspx">BOSS</a>. Copy the text from <a target="_blank" href="https://eservices.smu.edu.sg/BOSS/BOSSWeb/DownloadTimetable.aspx">"Download class and exam timetable"</a> and paste it below. </div>
-      <a className="btn post" href="../blazerender">asdf</a>
       <form className="main form" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label className="control-label" htmlFor="url">CSV</label>
@@ -69,83 +54,8 @@ END:VEVENT\n\
       </form>
       </div>
     )
+
   }
 });
 
-IncludeTemplate = React.createClass({
-    componentDidMount() {
-        var componentRoot = ReactDOM.findDOMNode(this);
-        var parentNode = componentRoot.parentNode;
-        parentNode.removeChild(componentRoot);
-        // Render the Blaze template on this node
-        this.view = Blaze.render(this.props.template, parentNode);
-        console.log(this.view)
-    },
-    componentWillUnmount() {
-        // Clean up Blaze view
-        Blaze.remove(this.view);
-    },
-    render(template) {
-        return (<div />)
-    }
-});
 
-
-
-/*Home = React.createClass({
-
-  mixins: [ReactMeteorData],
-
-  getMeteorData() {
-    var data = {};
-    var handle = Meteor.subscribe("posts");
-    if (handle.ready()){
-      data.posts = Posts.find().fetch();
-    }
-    return data;
-  },
-
-  renderPosts(){
-    return this.data.posts.map((post) => {
-      return <Post key={post._id} postId={post._id} post={post} />; //key not accessible from props anymore. check docs. using postId instead.
-    });
-  },
-
-  render() {
-    return (this.data.posts)? <div> {this.renderPosts()} </div> : <div>Loading...</div>;
-  }
-
-});
-
-
-
-Post = React.createClass({
-
-  domain(url) {
-    var a = document.createElement("a");
-    a.href = url;
-    return a.hostname;
-  },
-
-  handleClick(postId) {
-    FlowRouter.go('/post/' + postId);
-  },
-
-  render() {
-    if (this.props){
-      return (
-        <div className="post" onClick={this.handleClick.bind(this, this.props.postId)}>
-          <div className="post-content">
-            <h3><a href={this.props.post.url}>{this.props.post.title}</a><span>{this.domain(this.props.post.url)}</span></h3>
-          </div>
-        </div>
-      )
-    }
-    else {
-      return (
-        <div>loading...</div>
-      )
-    }
-  }
-
-});*/

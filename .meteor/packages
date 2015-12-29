@@ -26,7 +26,6 @@ random
 ejson
 spacebars
 check
-meteorhacks:kadira-debug
 
 
 cfs:standard-packages
@@ -37,4 +36,3 @@ froatsnook:request
 
 npm-container
 meteortoys:allthings
-meteorhacks:kadira

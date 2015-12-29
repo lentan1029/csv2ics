@@ -19,7 +19,7 @@ FlowRouter.route('/blazerender', {
   name: 'blazerender',
   triggersEnter: [checkLoggedIn],
   action: function(params) {
-    ReactLayout.render(IncludeTemplate, {template: Template.fileList})
+    ReactLayout.render(IncludeTemplate, {template: Template.fileList});
   }
 });
 
@@ -29,8 +29,8 @@ function checkLoggedIn(context, redirect) {
   }
 }
 
-FlowRouter.notFound = {
+/*FlowRouter.notFound = {
   action: function(){
     FlowRouter.go("home");
   }
-}
+}*/
