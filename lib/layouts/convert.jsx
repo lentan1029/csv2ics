@@ -93,10 +93,10 @@ DTEND:" +
 formatDT(eventArray[i][1]) + 
 "\n\
 SUMMARY:" + 
-"Course Title: "+eventArray[i][2]+
-" Location: "+eventArray[i][3]+
-" Section: "+eventArray[i][5]+
-" Taught by: "+eventArray[i][4]+
+eventArray[i][2]+
+"\nLOCATION: "+eventArray[i][3]+
+"\nDESCRIPTION:Section: "+eventArray[i][5]+
+"\\nProfessor: "+eventArray[i][4]+
 "\n\
 END:VEVENT\n\
 \n");
@@ -119,6 +119,10 @@ function parseCsv(data){
   return arr;
 }
 
+function isSchoolDay(date){ //WIP
+  return true;
+}
+
 function eventGenerator(startDate, endDate, day, startTime, endTime, courseTitle, location, professor, section, isExam, enrolled){
   if(enrolled!="Enrolled") return;
 
@@ -136,16 +140,20 @@ function eventGenerator(startDate, endDate, day, startTime, endTime, courseTitle
   }
   startDate = dateParser(startDate);
   endDate = dateParser(endDate);
+  var week = 0;
   for(; startDate <= endDate; startDate.setDate(startDate.getDate()+1)){
     if(startDate.getDay() == dayNum[day]){
-      var tmpStart = new Date(startDate);
-      tmpStart.setHours(startTime.slice(0,2));
-      tmpStart.setMinutes(startTime.slice(3,5));
-      var tmpEnd = new Date(startDate);
-      tmpEnd.setHours(endTime.slice(0,2));
-      tmpEnd.setMinutes(endTime.slice(3,5));
+      week++;
+      if(isSchoolDay(startDate.getDay()) && week != 8 && week != 14){
+        var tmpStart = new Date(startDate);
+        tmpStart.setHours(startTime.slice(0,2));
+        tmpStart.setMinutes(startTime.slice(3,5));
+        var tmpEnd = new Date(startDate);
+        tmpEnd.setHours(endTime.slice(0,2));
+        tmpEnd.setMinutes(endTime.slice(3,5));
 
-      res.push([tmpStart,tmpEnd, courseTitle, location, professor, section, isExam]);
+        res.push([tmpStart,tmpEnd, courseTitle, location, professor, section, isExam]);
+      }
     }
   }
 
