@@ -18,13 +18,17 @@ Convert = React.createClass({
     return arrToIcs(res);
   },
 
+  handleShowDownloads(event){
+    FlowRouter.go("blazerender");
+  },
+
 
   handleSubmit(event){
     event.preventDefault();
     var csv = ReactDOM.findDOMNode(this.refs.csvValues).value;
     var ics = this.csvToIcs(csv);
     Meteor.call("storeIcs", ics, Meteor.userId());
-    ReactLayout.render(Main, {content: <IncludeTemplate template={Template.fileList}/>})
+    FlowRouter.go("blazerender");
    },
 
   render() {
@@ -40,6 +44,7 @@ Convert = React.createClass({
         </div>
         <input type="submit" value="Submit" className="btn btn-primary"/>
       </form>
+      <div className="btn btn-info" onClick={this.handleShowDownloads}>Show previously generated schedules</div>
       </div>
     )
 

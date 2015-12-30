@@ -1,6 +1,9 @@
 FlowRouter.route('/', {
   name: 'home',
   action: function(params) {
+    if(Meteor.user()){
+      FlowRouter.go("convert");
+    }
     ReactLayout.render(Main, {content: <Login />});
   }
 });
@@ -19,7 +22,7 @@ FlowRouter.route('/blazerender', {
   name: 'blazerender',
   triggersEnter: [checkLoggedIn],
   action: function(params) {
-    ReactLayout.render(IncludeTemplate, {template: Template.fileList});
+    ReactLayout.render(Main, {content: <IncludeTemplate template={Template.fileList}/>})
   }
 });
 
