@@ -34,7 +34,7 @@ Convert = React.createClass({
   render() {
     return (
       <div>
-      <div className="post"> Login to <a target="_blank" href="https://eservices.smu.edu.sg/BOSS/BOSSWeb/TTPlanner.aspx">BOSS</a>. Copy the text from <a target="_blank" href="https://eservices.smu.edu.sg/BOSS/BOSSWeb/DownloadTimetable.aspx">"Download class and exam timetable"</a> and paste it below. </div>
+      <div className="post"> 1. Click here to <a target="_blank" href="https://eservices.smu.edu.sg/BOSS/BOSSWeb/TTPlanner.aspx">login to BOSS</a>. <br />2. Copy the text from <a target="_blank" href="https://eservices.smu.edu.sg/BOSS/BOSSWeb/DownloadTimetable.aspx">"Download class and exam timetable"</a> and paste it below. </div>
       <form className="main form" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label className="control-label" htmlFor="url">CSV</label>
